@@ -343,8 +343,6 @@ public class Attributes implements Iterable<String>
 
     private static void checkEscaped(String string, char[] reserved, boolean allowStar) throws ServiceLocationException
     {
-        if (string.trim().length() == 0)
-            throw new ServiceLocationException("Escaped string could not be the empty string", SLPError.PARSE_ERROR);
         for (int i = 0; i < string.length(); ++i)
         {
             char ch = string.charAt(i);
