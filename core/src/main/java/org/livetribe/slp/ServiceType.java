@@ -17,7 +17,7 @@ package org.livetribe.slp;
 
 /**
  * Services that offer the same functionalities are characterized by the same <code>ServiceType</code>.
- * <br />
+ * <br>
  * The <code>ServiceType</code> forms the initial part of a {@link ServiceURL}, and it is used to both
  * characterize the service and to be used to lookup services that offer particular functionalities.
  * <code>ServiceType</code>s are represented in this form:
@@ -26,15 +26,15 @@ package org.livetribe.slp;
  * </pre>
  * The <code>service:</code> string can be omitted, though it is normally used to identify service types
  * exposed by SLP.
- * <br />
+ * <br>
  * The <code>abstract-type</code> denotes a type name for a service that can be exposed over a number of
  * different protocols. For example, JMX exposes connector servers (the services) over different
  * protocols, and their service type can be <code>service:jmx:rmi</code> or <code>service:jmx:jmxmp</code>,
  * where <code>rmi</code> and <code>jmxmp</code> are the protocols used for the wire communication.
- * <br />
+ * <br>
  * The <code>concrete-type</code> denotes a type name for the protocol used by the service to expose its
  * functionalities.
- * <br />
+ * <br>
  * The <code>naming-authority</code> denotes the name of an organization that defined the service type.
  *
  * @see ServiceURL
@@ -136,12 +136,12 @@ public class ServiceType implements Comparable<ServiceType>
 
     /**
      * Matches this service type against the given service type.
-     * <br />
+     * <br>
      * If this service types is equal to the given service type, the service types match.
-     * <br />
+     * <br>
      * The <code>service:</code> prefix is not influent in matching, so
      * <code>service:foo:bar</code> matches <code>foo:bar</code>.
-     * <br />
+     * <br>
      * <code>service:foo</code> matches <code>service:foo:bar</code>, <code>foo:bar</code> and <code>foo</code>.
      *
      * @param serviceType The service type to match against

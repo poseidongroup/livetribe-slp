@@ -83,7 +83,7 @@ import org.livetribe.slp.spi.net.UDPConnectorServer;
 
 /**
  * Implementation of an SLP directory agent standalone server that can be started as a service in a host.
- * <br />
+ * <br>
  * Only one instance of this server can be started per each host, as it listens on the SLP TCP port.
  * In SLP, directory agents work as cache of services and allow to reduce the network utilization since
  * both user agents and service agents will prefer a direct tcp connection with the directory agent over the
@@ -93,7 +93,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 {
     /**
      * Main method to start this directory agent.
-     * <br />
+     * <br>
      * It accepts a single program argument, the file path of the configuration file that overrides the
      * defaults for this directory agent
      *
@@ -391,7 +391,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a multicast UDP SrvRqst message arrived to this directory agent.
-     * <br />
+     * <br>
      * The SrvRqst messages is expected to have the {@link DirectoryAgentInfo#SERVICE_TYPE directory agent service type}
      * and the reply is a DAAdvert message
      *
@@ -444,7 +444,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a unicast UDP SrvRqst message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with a list of matching services.
      *
      * @param srvRqst       the SrvRqst message to handle
@@ -472,7 +472,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a unicast TCP SrvRqst message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with a list of matching services.
      *
      * @param srvRqst the SrvRqst message to handle
@@ -514,7 +514,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles unicast UDP SrvReg message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with an acknowledge containing the result of the registration.
      *
      * @param srvReg        the SrvReg message to handle
@@ -538,7 +538,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a unicast TCP SrvReg message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with an acknowledge containing the result of the registration.
      *
      * @param srvReg the SrvReg message to handle
@@ -561,7 +561,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles unicast UDP SrvDeReg message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with an acknowledge containing the result of the deregistration.
      *
      * @param srvDeReg      the SrvDeReg message to handle
@@ -585,7 +585,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a unicast TCP SrvDeReg message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with an acknowledge containing the result of the deregistration.
      *
      * @param srvDeReg the SrvDeReg message to handle
@@ -608,7 +608,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles unicast UDP AttrRqst message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with a list of attributes of matching services.
      *
      * @param attrRqst      the AttrRqst message to handle
@@ -633,7 +633,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a unicast TCP AttrRqst message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with an AttrRply containing the result of the attribute request.
      *
      * @param attrRqst the AttrRqst message to handle
@@ -687,7 +687,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a unicast UDP SrvTypeRqst message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with an SrvTypeRply containing the service types.
      *
      * @param srvTypeRqst   the SrvTypeRqst message to handle
@@ -712,7 +712,7 @@ public class StandardDirectoryAgentServer extends AbstractServer
 
     /**
      * Handles a unicast TCP SrvTypeRqst message arrived to this directory agent.
-     * <br />
+     * <br>
      * This directory agent will reply with an SrvTypeRply containing the service types.
      *
      * @param srvTypeRqst the SrvTypeRqst message to handle

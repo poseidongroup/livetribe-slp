@@ -24,10 +24,10 @@ import org.livetribe.slp.ua.UserAgent;
 
 /**
  * This class tests that the SLP implementation is compatible with <a href="http://openslp.org">OpenSLP</a>.
- * <br />
+ * <br>
  * It assumes OpenSLP has been configured as DirectoryAgent, and this test will behave as a service agent
  * (registering a service and deregistering it), and will behave as a user agent (discovering services).
- * <br />
+ * <br>
  * In this configuration, the messages tested are:
  * <ul>
  * <li>SrvRqst</li>

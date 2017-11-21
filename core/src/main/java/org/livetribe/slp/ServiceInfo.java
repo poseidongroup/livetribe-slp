@@ -23,15 +23,15 @@ import org.livetribe.slp.spi.msg.SrvReg;
 
 /**
  * Representation of a service, exposed by ServiceAgents and cached by DirectoryAgents.
- * <br />
+ * <br>
  * In SLP, services are distinguished by their {@link ServiceURL} and by their language; these two elements
  * form the {@link Key key} of the service. Two service registration with the same key overwrite each other.
  * The {@link Key} object returned by {@link #getKey()} must be used as key in hash structures.
- * <br />
+ * <br>
  * {@link Attributes} are not involved in service equality since they can contain
  * locale-specific information (for example: <code>(color=Yellow)</code> with language English,
  * and <code>(color=Giallo)</code> with language Italian.
- * <br />
+ * <br>
  * IMPLEMENTATION NOTES:
  * There is an asymmetry in SLP that allows <code>(ServiceURL1, language1)</code>
  * to be registered under two different ServiceTypes (this is allowed by the format of

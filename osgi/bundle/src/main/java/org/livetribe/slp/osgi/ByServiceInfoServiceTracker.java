@@ -32,7 +32,7 @@ import org.livetribe.slp.sa.ServiceAgent;
  * service URL registration by leverging the OSGi service registry mechanism.
  * This has the added benefit of automatic deregistration of the SLP service
  * URLshould the bundle become unresolved.
- * <p/>
+ * <br>
  * Bundles wishing to register an SLP service URL merely need to register an
  * instance of {@link ServiceInfo} in the OSGi service registry.  The instance
  * of {@link ServiceInfo} contains all the information to register an SLP

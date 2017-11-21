@@ -35,7 +35,7 @@ import org.livetribe.slp.sa.ServiceAgent;
 /**
  * Instances of {@link ServiceAgent} can be created and configured using OSGi's
  * Configuration Admin Service.
- * <p/>
+ * <br>
  * A default {@link ServiceAgent} instance can be created at construction which
  * can be replaced when the OSGi service's configuration is updated or no
  * {@link ServiceAgent} instance until the service's configuration is updated.

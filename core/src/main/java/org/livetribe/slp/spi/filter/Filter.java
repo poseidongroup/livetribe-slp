@@ -20,7 +20,7 @@ import org.livetribe.slp.Attributes;
 
 /**
  * A LDAPv3 expression used to match {@link Attributes}.
- * <br />
+ * <br>
  * Instances of this class are created via {@link FilterParser}.
  */
 public interface Filter

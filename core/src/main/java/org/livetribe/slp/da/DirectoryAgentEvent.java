@@ -23,7 +23,7 @@ import org.livetribe.slp.ua.UserAgent;
 
 /**
  * The event that indicates that a DirectoryAgent has either born or died.
- * <br />
+ * <br>
  * {@link ServiceAgent}s and {@link UserAgent}s listen for directory agent advertisements and forward these events
  * to interested listeners.
  *

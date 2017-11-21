@@ -37,7 +37,7 @@ import org.livetribe.slp.spi.net.UDPConnector;
 
 
 /**
- * Encapsulates the multicast convergence algorithm. <br />
+ * Encapsulates the multicast convergence algorithm. <br>
  * SLP uses multicast convergence for discovery.
  * The goal of multicast convergence is to send a number of requests separated by a wait time; interested parties
  * that receive a request send a reply accordingly. Every reply carries (implicitely or explicitely) an indentifier

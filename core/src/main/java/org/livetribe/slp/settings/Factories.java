@@ -27,9 +27,9 @@ public class Factories
 {
     /**
      * Creates a new instance of a class whose full qualified name is specified under the given key.
-     * <br />
+     * <br>
      * The class will be loaded using the current context ClassLoader.
-     * <br />
+     * <br>
      * If the given settings is null, or it does not contain the specified key, the default value of the key
      * is taken from the {@link Defaults defaults}.
      *
@@ -49,7 +49,7 @@ public class Factories
     /**
      * Creates a new instance of a class whose full qualified name is specified under the given key, loading
      * the class with the given class loader.
-     * <br />
+     * <br>
      * If the given settings is null, or it does not contain the specified key, the default value of the key
      * is taken from the {@link Defaults defaults}.
      *

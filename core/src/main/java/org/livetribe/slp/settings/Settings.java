@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * The configuration settings used throughout LiveTribe SLP.
- * <br />
+ * <br>
  * Each configuration setting is made of a {@link Key} and a value.
  * The interface of this class is similar to that of {@link Map} except
  * that each key defines the type of the corrispondent value.

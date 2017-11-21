@@ -25,17 +25,17 @@ import org.livetribe.slp.spi.Server;
 
 /**
  * The interface of an SLP service agent non-standalone server that can be started multiple times on a single host.
- * <br />
+ * <br>
  * A ServiceAgent is a server in the sense that once started it listens for SLP multicast messages
  * (such as directory agent advertisements or service requests). However, it does not listen on the SLP TCP port,
  * making possible to start any number of ServiceAgents on a single host without the need to setup an external server
  * or without the need to worry about already bound TCP ports (and as such it is non-standalone).
- * <br />
+ * <br>
  * ServiceAgents are most useful when embedded in an application that need to expose services via SLP:
  * the application will normally create an instance of ServiceAgent, register one or more services, and then start
  * the ServiceAgent. Other applications in other JVMs on the same host may do exactly the same.
  * In this scenario, the ServiceAgent is in-VM with the application.
- * <br />
+ * <br>
  * The preferred way to instantiate a ServiceAgent is the following:
  * <pre>
  * Settings settings = ...
@@ -51,7 +51,7 @@ public interface ServiceAgent extends IServiceAgent, DirectoryAgentNotifier, Ser
 {
     /**
      * The factory for ServiceAgents.
-     * <br />
+     * <br>
      * The concrete factory class can be specified in the given settings with the {@link Keys#SA_FACTORY_KEY} key.
      *
      * @see Factories

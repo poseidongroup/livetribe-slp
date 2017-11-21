@@ -32,7 +32,7 @@ import org.livetribe.slp.util.Listeners;
 
 /**
  * A thread-safe class that caches {@link DirectoryAgentInfo}.
- * <br />
+ * <br>
  */
 public class DirectoryAgentInfoCache
 {

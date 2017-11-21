@@ -24,13 +24,13 @@ import org.livetribe.slp.settings.Settings;
 /**
  * The interface of an SLP service agent client, that will connect via TCP on the loopback interface to a
  * {@link StandardServiceAgentServer service agent standalone server} running on the same host.
- * <br />
+ * <br>
  * ServiceAgentClient do not listen for SLP messages but only issue requests and receive replies for the
  * requests they issued.
  * ServiceAgentClients are used by applications that want to expose their services via SLP, but do not want
  * to start a {@link ServiceAgent} in-VM. However, such deployment scenario requires the setup of an external
  * service agent standalone server.
- * <br />
+ * <br>
  * The preferred way to instantiate a ServiceAgentClient is the following:
  * <pre>
  * Settings settings = ...
@@ -45,7 +45,7 @@ public interface ServiceAgentClient extends IServiceAgent
 {
     /**
      * The factory for ServiceAgentClients.
-     * <br />
+     * <br>
      * The concrete factory class can be specified in the given settings with the {@link Keys#SA_CLIENT_FACTORY_KEY} key.
      *
      * @see Factories

@@ -26,11 +26,11 @@ import org.livetribe.slp.spi.msg.DAAdvert;
 
 /**
  * Representation of the information regarding a DirectoryAgent.
- * <br />
+ * <br>
  * DirectoryAgents advertise their presence on the network periodically, as well as their bootup and shutdown.
  * ServiceAgents and UserAgents listen for DirectoryAgent advertisements and use the information contained in
  * DirectoryAgentInfo to contact the DirectoryAgent.
- * <br />
+ * <br>
  * DirectoryAgentInfos have a {@link #getKey() key} that distinguishes them and that can be used as key
  * in hash structures.
  */
@@ -204,7 +204,7 @@ public class DirectoryAgentInfo
     /**
      * Returns the unicast port this DirectoryAgent is listening on, if this information is available in the Attributes
      * via the dedicated tags.
-     * <br />
+     * <br>
      * If the unicast port information is not available in the Attributes, returns the given port.
      *
      * @param tcp         whether the unicast port to return must be a TCP port or not

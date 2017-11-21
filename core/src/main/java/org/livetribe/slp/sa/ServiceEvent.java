@@ -22,7 +22,7 @@ import org.livetribe.slp.ServiceInfo;
 
 /**
  * The event that indicates that a service has been registered or updated or deregistered.
- * <br />
+ * <br>
  * Service agents and directory agents manage service registration, update and deregistration and forward these
  * events to interested listeners.
  *

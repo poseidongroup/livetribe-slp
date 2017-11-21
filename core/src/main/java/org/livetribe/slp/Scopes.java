@@ -23,7 +23,7 @@ import java.util.List;
 
 /**
  * Scopes are case insensitive string labels used to group together related services.
- * <br />
+ * <br>
  * Both DirectoryAgent and ServiceAgent have assigned one or more scopes so that they can advertise services
  * belonging to the scopes they've been assigned. The scope assigned by default to DirectoryAgents and
  * UserAgents is the {@link #DEFAULT} scope.
@@ -116,11 +116,11 @@ public class Scopes
 
     /**
      * Matches the given <code>Scopes</code> argument against this <code>Scopes</code> object.
-     * <br />
-     * If this <code>Scopes</code> is the {@link #NONE} scope, always returns false. <br />
-     * If this <code>Scopes</code> is the {@link #ANY} scope, always returns true. <br />
-     * If the given <code>Scopes</code> is the {@link #NONE} scope, always returns true. <br />
-     * If the given <code>Scopes</code> is the {@link #ANY} scope, always returns false. <br />
+     * <br>
+     * If this <code>Scopes</code> is the {@link #NONE} scope, always returns false. <br>
+     * If this <code>Scopes</code> is the {@link #ANY} scope, always returns true. <br>
+     * If the given <code>Scopes</code> is the {@link #NONE} scope, always returns true. <br>
+     * If the given <code>Scopes</code> is the {@link #ANY} scope, always returns false. <br>
      *
      * @param other the <code>Scopes</code> to match
      * @return true if all scopes specified by the given <code>Scopes</code> argument
@@ -139,11 +139,11 @@ public class Scopes
     /**
      * Matches the given <code>Scopes</code> argument against this <code>Scopes</code> object,
      * more weakly than {@link #match(Scopes)}.
-     * <br />
-     * If this <code>Scopes</code> is the {@link #NONE} scope, always returns false. <br />
-     * If this <code>Scopes</code> is the {@link #ANY} scope, always returns true. <br />
-     * If the given <code>Scopes</code> is the {@link #NONE} scope, always returns true. <br />
-     * If the given <code>Scopes</code> is the {@link #ANY} scope, always returns false. <br />
+     * <br>
+     * If this <code>Scopes</code> is the {@link #NONE} scope, always returns false. <br>
+     * If this <code>Scopes</code> is the {@link #ANY} scope, always returns true. <br>
+     * If the given <code>Scopes</code> is the {@link #NONE} scope, always returns true. <br>
+     * If the given <code>Scopes</code> is the {@link #ANY} scope, always returns false. <br>
      *
      * @param other the <code>Scopes</code> to match
      * @return true if at least one of the scopes specified by the given <code>Scopes</code> argument

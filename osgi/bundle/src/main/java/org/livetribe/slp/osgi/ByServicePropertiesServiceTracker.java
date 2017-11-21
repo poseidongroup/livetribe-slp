@@ -43,31 +43,31 @@ import org.livetribe.slp.sa.ServiceAgent;
  * of SLP service URL registration by leverging the OSGi service registry
  * mechanism. This has the added benefit of automatic deregistration of the SLP
  * service URLshould the bundle become unresolved.
- * <p/>
+ * <br>
  * Bundles wishing to register an SLP service URL merely need to register a
  * service in the OSGi service registry with the property <code>slp.url</code>.
  * A simple form of variable substitution can be used to construct the SLP
  * service URL.
- * <p/>
+ * <br>
  * Any part of the <code>slp.url</code> can contain variables of the form
  * <code><b>${</b>key<b>}</b></code>, where <i>key</i> is used to index the
  * OSGi service properties to obtain a value.  If that key does not exist in
  * the service properties an empty string is used for the replacement value.
- * <p/>
+ * <br>
  * The OSGi service properties are used to obtain the SLP service URL
  * properties.  The <code>slp.url</code> and the properties listed below are
  * removed first before creating the SLP service URL properties.
- * <p/>
+ * <br>
  * Other OSGi service properties that are used to construct the instance of
  * {@link ServiceInfo} are:
- * <p/>
+ * <br>
  * <ul>
  * <li><code>slp.service.type</code></li>
  * <li><code>slp.url.lifetime</code></li>
  * <li><code>slp.language</code></li>
  * <li><code>slp.scopes</code></li>
  * </ul>
- * <p/>
+ * <br>
  * These properties do not participate in the variable subtitution for the SLP
  * service URL.  All are optional except <code>slp.url</code>.
  *

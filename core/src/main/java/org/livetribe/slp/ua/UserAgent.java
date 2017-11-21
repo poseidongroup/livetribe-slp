@@ -26,14 +26,14 @@ import org.livetribe.slp.spi.ua.IUserAgent;
 
 /**
  * The interface of an SLP user agent non-standalone server that can be started multiple times on a single host.
- * <br />
+ * <br>
  * A UserAgent is a server in the sense that once started it listens for SLP multicast messages
  * (such as directory agent advertisements, service registration notifications or service deregistration notifications).
- * <br />
+ * <br>
  * UserAgents are most useful when embedded in an application that need to be aware of service registrations
  * or deregistrations in absence of directory agents.
  * In this scenario, the ServiceAgent is in-VM with the application.
- * <br />
+ * <br>
  * The preferred way to instantiate a UserAgent is the following:
  * <pre>
  * Settings settings = ...
@@ -62,7 +62,7 @@ public interface UserAgent extends IUserAgent, DirectoryAgentNotifier, Server
 
     /**
      * The factory for UserAgents.
-     * <br />
+     * <br>
      * The concrete factory class can be specified in the given settings with the {@link Keys#UA_FACTORY_KEY} key.
      *
      * @see Factories

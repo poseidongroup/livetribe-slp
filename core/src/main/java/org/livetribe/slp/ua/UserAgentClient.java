@@ -23,12 +23,12 @@ import org.livetribe.slp.spi.ua.IUserAgent;
 
 /**
  * The interface of an SLP user agent client.
- * <br />
+ * <br>
  * UserAgentClients do not listen for SLP messages but only issue requests and receive replies for the
  * requests they issued.
  * UserAgentClients are used by applications that want to find services via SLP, but do not want
  * to start a {@link UserAgent} in-VM.
- * <br />
+ * <br>
  * The preferred way to instantiate a UserAgentClient is the following:
  * <pre>
  * Settings settings = ...
@@ -39,7 +39,7 @@ public interface UserAgentClient extends IUserAgent
 {
     /**
      * The factory for UserAgentClients.
-     * <br />
+     * <br>
      * The concrete factory class can be specified in the given settings with the {@link Keys#UA_CLIENT_FACTORY_KEY} key.
      *
      * @see Factories

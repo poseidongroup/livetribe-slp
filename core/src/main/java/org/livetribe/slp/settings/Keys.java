@@ -17,10 +17,10 @@ package org.livetribe.slp.settings;
 
 /**
  * The configuration {@link Key}s used in LiveTribe SLP.
- * <br />
+ * <br>
  * Key strings beginning with 'net.slp' are those defined by RFC 2614.
  * Key strings beginning with 'livetribe.slp' are specific to LiveTribe's implementation.
- * <br />
+ * <br>
  * Abbreviations:
  * <ul>
  * <li>DA = DirectoryAgent server</li>

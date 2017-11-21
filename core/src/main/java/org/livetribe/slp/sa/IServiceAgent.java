@@ -24,13 +24,13 @@ import org.livetribe.slp.ServiceURL;
 
 /**
  * Common interface for SLP service agents.
- * <br />
+ * <br>
  * A service agent advertise services on behalf of the provider of the services.
- * <br />
+ * <br>
  * For example, an application can expose a JMXConnectorServer in order to provide management to remote clients;
  * without SLP, a remote client either knows beforehand how to connect to the JMXConnectorServer, or it has no
  * clue of how to connect.
- * <br />
+ * <br>
  * With SLP, instead, the application exposes the JMXConnectorServer as a service via SLP, by starting a service agent
  * and by registering the JMXConnectorServer service in the service agent.
  * A remote client uses an SLP user agent to issue a service request for JMXConnectorServer services; the service
@@ -42,7 +42,7 @@ public interface IServiceAgent
 {
     /**
      * Registers the given service.
-     * <br />
+     * <br>
      * It is necessary that the given service defines the {@link ServiceURL}, the language and that the Scopes of this
      * service agent {@link Scopes#match(Scopes) match} the Scopes of the service.
      *
@@ -54,7 +54,7 @@ public interface IServiceAgent
 
     /**
      * Updates the Attributes of the service registered with the given ServiceURL and language adding the given Attributes.
-     * <br />
+     * <br>
      * A registered service with Attributes (A=1),(B=2),(C=3) that is updated adding the Attributes (C=30),(D=40) will
      * have Attributes (A=1),(B=2),(C=30),(D=40)
      *
@@ -68,7 +68,7 @@ public interface IServiceAgent
 
     /**
      * Updates the Attributes of the service registered with the given ServiceURL and language removing the given Attributes.
-     * <br />
+     * <br>
      * A registered service with Attributes (A=1),(B=2),(C=3) that is updated removing the Attributes (B=20),D will
      * have Attributes (A=1),(C=3).
      * Only the tags (and not the values) in the given Attributes are used to remove the corrispondent attributes in

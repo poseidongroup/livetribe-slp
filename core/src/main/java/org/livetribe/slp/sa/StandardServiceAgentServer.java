@@ -54,7 +54,7 @@ import static org.livetribe.slp.settings.Keys.UDP_CONNECTOR_SERVER_FACTORY_KEY;
 
 /**
  * Implementation of an SLP service agent standalone server that can be started as a service in a host.
- * <br />
+ * <br>
  * Only one instance of this server can be started per each host, as it listens on the SLP TCP port.
  * In SLP, a service agent standalone server exposes the services of all applications in the host it resides,
  * so that each application does not need to start a {@link ServiceAgent}, but only uses a {@link ServiceAgentClient}
@@ -64,7 +64,7 @@ public class StandardServiceAgentServer extends AbstractServiceAgent
 {
     /**
      * Main method to start this service agent.
-     * <br />
+     * <br>
      * It accepts a single program argument, the file path of the configuration file that overrides the
      * defaults for this service agent
      *
@@ -159,7 +159,7 @@ public class StandardServiceAgentServer extends AbstractServiceAgent
 
     /**
      * Handles a unicast TCP SrvReg message arrived to this service agent.
-     * <br />
+     * <br>
      * This service agent will reply with an acknowledge containing the result of the registration.
      *
      * @param srvReg the SrvReg message to handle
@@ -183,7 +183,7 @@ public class StandardServiceAgentServer extends AbstractServiceAgent
 
     /**
      * Handles a unicast TCP SrvDeReg message arrived to this service agent.
-     * <br />
+     * <br>
      * This service agent will reply with an acknowledge containing the result of the deregistration.
      *
      * @param srvDeReg the SrvDeReg message to handle
@@ -207,7 +207,7 @@ public class StandardServiceAgentServer extends AbstractServiceAgent
 
     /**
      * Handles a unicast TCP SrvRqst message arrived to this service agent.
-     * <br />
+     * <br>
      * This service agent will reply with a list of matching services.
      *
      * @param srvRqst the SrvRqst message to handle

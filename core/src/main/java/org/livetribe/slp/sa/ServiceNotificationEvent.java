@@ -23,7 +23,7 @@ import org.livetribe.slp.ServiceInfo;
 /**
  * The event that indicates that a service registration or deregistration notification has been emitted
  * following RFC 3082.
- * <br />
+ * <br>
  * Service agents emit notification in absence of a directory agent deployed on the network, to inform
  * interested parties that a service has been registered or deregistered.
  */

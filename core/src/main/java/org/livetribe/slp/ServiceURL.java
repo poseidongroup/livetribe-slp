@@ -17,12 +17,12 @@ package org.livetribe.slp;
 
 /**
  * A ServiceURL represents the location of a service.
- * <br />
+ * <br>
  * A client given a ServiceURL should be able to contact the remote service that the ServiceURL
  * represents with the information carried by the ServiceURL itself.
  * A ServiceURL is a URI that defines at least scheme and address portion, and that may have the
  * <code>service:</code> scheme.
- * <br />
+ * <br>
  * ServiceURLs have a lifetime, used to denote the period of time over which the service is
  * available.
  *

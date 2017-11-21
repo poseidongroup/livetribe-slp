@@ -35,11 +35,11 @@ import org.livetribe.slp.ua.UserAgent;
  * management of SLP service notification listeners by leveraging the
  * OSGi service registry mechanism. This has the added benefit of automatic
  * deregistration of the listeners should the bundle become unresolved.
- * <p/>
+ * <br>
  * Bundles wishing to register an SLP service notification listeners
  * merely need to register an instance of {@link ServiceNotificationListener}
  * in the OSGi service registry.
- * <p/>
+ * <br>
  * A {@link Filter} can be passed to the constructor to narrow which instances
  * of {@link ServiceNotificationListener} are registered.
  *
@@ -136,7 +136,7 @@ public class ServiceNotificationListenerServiceTracker
 
     /**
      * Close this <code>ServiceTracker</code>.
-     * <p/>
+     * <br>
      * This method should be called when this <code>ServiceTracker</code> should
      * end the tracking instances of {@link ServiceNotificationListener}.
      */

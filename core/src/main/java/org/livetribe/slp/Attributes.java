@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 /**
  * Attributes are a comma separated list of key-value pairs that describe a service.
- * <br />
+ * <br>
  * The attribute key is called <b>tag</b>, and the attribute value can be non-valued (the tag as no value),
  * single-valued (the tag as only one value) or multi-valued (the tag has more values).
  * Depending on the value(s) of the tag, the attribute has a <b>type</b>; there are four defined types:
@@ -37,10 +37,10 @@ import java.util.regex.Pattern;
  * </ul>
  * Attribute values must be homogeneous: the attribute <code>(a=1,true,hello)</code> is illegal, because it's not
  * clear if the type is integer, boolean, or string.
- * <br />
+ * <br>
  * Attributes can be used by UserAgents during service lookup to select appropriate services that match required
  * conditions.
- * <br />
+ * <br>
  * Attributes can be described using a string representation; a valued or multi-valued attribute must be enclosed in
  * parenthesis, while for non-valued attributes (also called <em>presence attributes</em>) the parenthesis must be
  * omitted, for example:
@@ -200,7 +200,7 @@ public class Attributes implements Iterable<String>
     /**
      * Returns a byte array containing the bytes parsed from the given opaque string,
      * except the initial opaque prefix \FF.
-     * <br />
+     * <br>
      * For example the string <code>\FF\CA\FE</code> will be converted into the byte array
      * <code>[0xCA, 0xFE]</code>.
      *
@@ -235,7 +235,7 @@ public class Attributes implements Iterable<String>
     /**
      * Returns an opaque string containing the escaped sequence of the given bytes,
      * including the initial opaque prefix \FF.
-     * <br />
+     * <br>
      * For example the byte array <code>[0xCA, 0xFE]</code> will be converted into the string
      * <code>\FF\CA\FE</code>.
      *
@@ -259,7 +259,7 @@ public class Attributes implements Iterable<String>
 
     /**
      * Escapes the given tag string following RFC 2608, 5.0.
-     * <br />
+     * <br>
      * For example, the tag string <code>file_path</code> will be converted into the string
      * <code>file\5fpath</code>, since the character '_' is reserved in tags.
      *
@@ -357,9 +357,9 @@ public class Attributes implements Iterable<String>
 
     /**
      * Escapes the given unescaped value string following RFC 2608, 5.0.
-     * <br />
+     * <br>
      * For example, the string value <code>&lt;A&gt;</code> will be converted into the string
-     * <code>\3cA\3e</code>, since the characters '<' and '>' are reserved in values.
+     * <code>\3cA\3e</code>, since the characters '&lt;' and '&gt;' are reserved in values.
      *
      * @param unescapedValue the value string to escape
      * @return the escaped value string
@@ -372,7 +372,7 @@ public class Attributes implements Iterable<String>
 
     /**
      * Unescapes the given escaped value string following RFC 2608, 5.0.
-     * <br />
+     * <br>
      * For example, the string value <code>\3cA\3e</code> will be converted into the string
      * <code>&lt;A&gt;</code>.
      *

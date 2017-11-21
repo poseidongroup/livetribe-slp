@@ -49,7 +49,7 @@ public class Editors
 
     /**
      * Converts the given text string to an object of the given type class.
-     * <br />
+     * <br>
      * If no editor is registered for the given type class, or if it fails the conversion, the default
      * property editor from {@link PropertyEditorManager} is tried.
      *
