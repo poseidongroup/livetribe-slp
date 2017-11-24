@@ -15,6 +15,8 @@
  */
 package org.livetribe.slp.settings;
 
+import java.net.InetAddress;
+
 /**
  * The configuration {@link Key}s used in LiveTribe SLP.
  * <br>
@@ -229,6 +231,11 @@ public class Keys
      * The key to specify the full qualified name of the UDPConnectorServer factory class.
      */
     public static final Key<String> UDP_CONNECTOR_SERVER_FACTORY_KEY = Key.from("livetribe.slp.udp.connector.server.factory", String.class);
+
+    /**
+     * added for supporting multiple NICs
+     */
+    public static final Key<String> LOCAL_NETWORK_ADDRESS = Key.from("livetribe.slp.localaddress", String.class);
 
     private Keys()
     {

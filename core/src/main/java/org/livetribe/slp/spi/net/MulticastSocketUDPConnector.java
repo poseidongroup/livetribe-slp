@@ -17,9 +17,11 @@ package org.livetribe.slp.spi.net;
 
 import java.io.IOException;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
 
+import static org.livetribe.slp.settings.Keys.LOCAL_NETWORK_ADDRESS;
 import static org.livetribe.slp.settings.Keys.MULTICAST_ADDRESS_KEY;
 import static org.livetribe.slp.settings.Keys.MULTICAST_TIME_TO_LIVE_KEY;
 
@@ -36,6 +38,7 @@ public class MulticastSocketUDPConnector extends SocketUDPConnector
 {
     private String multicastAddress = Defaults.get(MULTICAST_ADDRESS_KEY);
     private int multicastTimeToLive = Defaults.get(MULTICAST_TIME_TO_LIVE_KEY);
+    private String localAddress = null;
 
     public MulticastSocketUDPConnector()
     {
@@ -53,6 +56,7 @@ public class MulticastSocketUDPConnector extends SocketUDPConnector
         if (settings.containsKey(MULTICAST_ADDRESS_KEY)) this.multicastAddress = settings.get(MULTICAST_ADDRESS_KEY);
 
         if (settings.containsKey(MULTICAST_TIME_TO_LIVE_KEY)) this.multicastTimeToLive = settings.get(MULTICAST_TIME_TO_LIVE_KEY);
+        if (settings.containsKey(LOCAL_NETWORK_ADDRESS)) this.localAddress = settings.get(LOCAL_NETWORK_ADDRESS);
     }
 
     public String getMulticastAddress()
@@ -68,6 +72,14 @@ public class MulticastSocketUDPConnector extends SocketUDPConnector
     protected String getManycastAddress()
     {
         return multicastAddress;
+    }
+
+    @Override
+    public DatagramSocket newDatagramSocket() {
+        if(localAddress != null) {
+            return newDatagramSocket(localAddress);
+        }
+        return super.newDatagramSocket();
     }
 
     @Override

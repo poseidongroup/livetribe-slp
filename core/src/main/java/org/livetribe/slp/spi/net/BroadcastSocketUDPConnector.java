@@ -19,6 +19,7 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 
 import static org.livetribe.slp.settings.Keys.BROADCAST_ADDRESS_KEY;
+import static org.livetribe.slp.settings.Keys.LOCAL_NETWORK_ADDRESS;
 
 import org.livetribe.slp.SLPError;
 import org.livetribe.slp.ServiceLocationException;
@@ -32,6 +33,7 @@ import org.livetribe.slp.settings.Settings;
 public class BroadcastSocketUDPConnector extends SocketUDPConnector
 {
     private String broadcastAddress = Defaults.get(BROADCAST_ADDRESS_KEY);
+    private String localAddress = null;
 
     public BroadcastSocketUDPConnector()
     {
@@ -47,6 +49,7 @@ public class BroadcastSocketUDPConnector extends SocketUDPConnector
     private void setSettings(Settings settings)
     {
         if (settings.containsKey(BROADCAST_ADDRESS_KEY)) this.broadcastAddress = settings.get(BROADCAST_ADDRESS_KEY);
+        if (settings.containsKey(LOCAL_NETWORK_ADDRESS)) this.localAddress = settings.get(LOCAL_NETWORK_ADDRESS);
     }
 
     public String getBroadcastAddress()
@@ -62,6 +65,14 @@ public class BroadcastSocketUDPConnector extends SocketUDPConnector
     protected String getManycastAddress()
     {
         return broadcastAddress;
+    }
+
+    @Override
+    public DatagramSocket newDatagramSocket() {
+        if(localAddress != null) {
+            return newDatagramSocket(localAddress);
+        }
+        return super.newDatagramSocket();
     }
 
     @Override
