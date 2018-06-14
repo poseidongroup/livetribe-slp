@@ -81,6 +81,7 @@ public class BroadcastSocketUDPConnector extends SocketUDPConnector
         try
         {
             DatagramSocket socket = super.newDatagramSocket(localAddress);
+            socket.setReuseAddress(true);
             socket.setBroadcast(true);
             return socket;
         }

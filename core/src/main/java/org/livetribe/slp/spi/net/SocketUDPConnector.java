@@ -117,7 +117,9 @@ public abstract class SocketUDPConnector implements UDPConnector
     {
         try
         {
-            return new DatagramSocket(localAddress == null ? new InetSocketAddress(0) : new InetSocketAddress(localAddress, 0));
+            DatagramSocket datagramSocket = new DatagramSocket(localAddress == null ? new InetSocketAddress(0) : new InetSocketAddress(localAddress, 0));
+            datagramSocket.setReuseAddress(true);
+            return datagramSocket;
         }
         catch (SocketException x)
         {

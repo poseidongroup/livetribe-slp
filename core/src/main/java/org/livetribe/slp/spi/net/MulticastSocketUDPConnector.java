@@ -91,6 +91,7 @@ public class MulticastSocketUDPConnector extends SocketUDPConnector
                     (localAddress == null ? new InetSocketAddress(0) : new InetSocketAddress(localAddress, 0))
             );
 
+            multicastSocket.setReuseAddress(true);
             multicastSocket.setTimeToLive(multicastTimeToLive);
 
             return multicastSocket;
