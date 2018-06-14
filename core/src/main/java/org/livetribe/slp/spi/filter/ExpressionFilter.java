@@ -30,7 +30,7 @@ import org.livetribe.slp.ServiceLocationException;
  */
 public class ExpressionFilter implements Filter
 {
-    private static final Pattern EXPRESSION_PATTERN = Pattern.compile("(.+?)([<>]?=)(.+)");
+    private static final Pattern EXPRESSION_PATTERN = Pattern.compile("(.+?)([<>]?=)(.*)");
     private static final Pattern OCTET_STRING_PATTERN = Pattern.compile("(\\\\[\\da-f]{2})+");
 
     static final String GE = ">=";
