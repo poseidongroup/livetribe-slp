@@ -22,10 +22,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.*;
 import java.util.logging.Level;
 
 import static org.livetribe.slp.settings.Keys.ADDRESSES_KEY;
@@ -300,7 +297,9 @@ public class SocketTCPConnectorServer extends AbstractConnectorServer implements
     {
         public TCPConnectorServer newTCPConnectorServer(Settings settings)
         {
-            ExecutorService threadPool = Executors.newCachedThreadPool();
+            ThreadPoolExecutor threadPool = new ThreadPoolExecutor(0, 5,
+                    60L, TimeUnit.SECONDS,
+                    new SynchronousQueue<Runnable>());
             return new SocketTCPConnectorServer(threadPool, settings);
         }
     }

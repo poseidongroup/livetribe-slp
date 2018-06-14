@@ -21,10 +21,7 @@ import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.*;
 import java.util.logging.Level;
 
 import static org.livetribe.slp.settings.Keys.ADDRESSES_KEY;
@@ -301,7 +298,9 @@ public abstract class SocketUDPConnectorServer extends AbstractConnectorServer i
 
         private UDPConnectorServer newUDPConnectorServer(Settings settings, int bindPort)
         {
-            ExecutorService threadPool = Executors.newCachedThreadPool();
+            ThreadPoolExecutor threadPool = new ThreadPoolExecutor(0, 5,
+                    60L, TimeUnit.SECONDS,
+                    new SynchronousQueue<Runnable>());
             Boolean broadcastEnabled = settings == null ? Boolean.FALSE : settings.get(BROADCAST_ENABLED_KEY, Defaults.get(BROADCAST_ENABLED_KEY));
             if (broadcastEnabled == null || !broadcastEnabled)
                 return new MulticastSocketUDPConnectorServer(threadPool, bindPort, settings);
