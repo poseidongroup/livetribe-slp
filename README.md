@@ -24,6 +24,12 @@ SLP is useful in all those cases where you need to contact a remote service, but
 
 **Example:** You want to leverage OSGi's Configuration Admin Service to configure SLP Service Agents and User Agents.
 
+# How to build artifacts
+
+Build using maven
+
+`mvn install -Dmaven.test.skip=true source:jar javadoc:jar`
+
 ### More Resources ###
 
 *  Discuss LiveTribe at [http://www.livetribe.org/Mailing+Lists](http://www.livetribe.org/Mailing+Lists)
