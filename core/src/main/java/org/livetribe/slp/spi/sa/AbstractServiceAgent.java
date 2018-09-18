@@ -23,31 +23,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
-import org.livetribe.slp.Attributes;
-import org.livetribe.slp.SLPError;
-import org.livetribe.slp.Scopes;
-import org.livetribe.slp.ServiceInfo;
-import org.livetribe.slp.ServiceLocationException;
-import org.livetribe.slp.ServiceType;
+import org.livetribe.slp.*;
 import org.livetribe.slp.da.DirectoryAgentEvent;
 import org.livetribe.slp.da.DirectoryAgentInfo;
 import org.livetribe.slp.da.DirectoryAgentListener;
 import org.livetribe.slp.sa.ServiceListener;
 import org.livetribe.slp.settings.Defaults;
 import org.livetribe.slp.settings.Settings;
-import org.livetribe.slp.spi.AbstractServer;
-import org.livetribe.slp.spi.MulticastDASrvRqstPerformer;
-import org.livetribe.slp.spi.ServiceInfoCache;
-import org.livetribe.slp.spi.UDPSrvAckPerformer;
+import org.livetribe.slp.spi.*;
 import org.livetribe.slp.spi.da.DirectoryAgentInfoCache;
 import org.livetribe.slp.spi.filter.Filter;
 import org.livetribe.slp.spi.filter.FilterParser;
-import org.livetribe.slp.spi.msg.DAAdvert;
-import org.livetribe.slp.spi.msg.Message;
-import org.livetribe.slp.spi.msg.SrvAck;
-import org.livetribe.slp.spi.msg.SrvDeReg;
-import org.livetribe.slp.spi.msg.SrvReg;
-import org.livetribe.slp.spi.msg.SrvRqst;
+import org.livetribe.slp.spi.msg.*;
 import org.livetribe.slp.spi.net.MessageEvent;
 import org.livetribe.slp.spi.net.MessageListener;
 import org.livetribe.slp.spi.net.NetUtils;
@@ -82,6 +69,7 @@ public abstract class AbstractServiceAgent extends AbstractServer implements Dir
     private final NotifySrvDeRegPerformer notifySrvDeReg;
     private final UDPSAAdvertPerformer udpSAAdvert;
     private final UDPSrvRplyPerformer udpSrvRply;
+    private final UDPAttrRplyPerformer udpAttrRply;
     private String[] directoryAgentAddresses = Defaults.get(DA_ADDRESSES_KEY);
     private String[] addresses = Defaults.get(ADDRESSES_KEY);
     private int port = Defaults.get(PORT_KEY);
@@ -101,6 +89,7 @@ public abstract class AbstractServiceAgent extends AbstractServer implements Dir
         this.notifySrvDeReg = new NotifySrvDeRegPerformer(udpConnector, settings);
         this.udpSAAdvert = new UDPSAAdvertPerformer(udpConnector, settings);
         this.udpSrvRply = new UDPSrvRplyPerformer(udpConnector, settings);
+        this.udpAttrRply = new UDPAttrRplyPerformer(udpConnector, settings);
         if (settings != null) setSettings(settings);
     }
 
@@ -449,6 +438,61 @@ public abstract class AbstractServiceAgent extends AbstractServer implements Dir
         }
     }
 
+    /**
+     * Handles unicast UDP AttrRqst message arrived to this directory agent.
+     * <br>
+     * This directory agent will reply with a list of attributes of matching services.
+     *
+     * @param attrRqst      the AttrRqst message to handle
+     * @param localAddress  the socket address the message arrived to
+     * @param remoteAddress the socket address the message was sent from
+     */
+    protected void handleUDPAttrRqst(AttrRqst attrRqst, InetSocketAddress localAddress, InetSocketAddress remoteAddress)
+    {
+        // Match scopes, RFC 2608, 11.1
+        if (!scopes.weakMatch(attrRqst.getScopes()))
+        {
+            udpAttrRply.perform(localAddress, remoteAddress, attrRqst, SLPError.SCOPE_NOT_SUPPORTED);
+            return;
+        }
+
+        Attributes attributes = matchAttributes(attrRqst);
+
+        if (logger.isLoggable(Level.FINE))
+            logger.fine("DirectoryAgent " + this + " returning attributes for service " + attrRqst.getURL() + ": " + attributes.asString());
+        udpAttrRply.perform(localAddress, remoteAddress, attrRqst, attributes);
+    }
+
+    protected Attributes matchAttributes(AttrRqst attrRqst)
+    {
+        boolean isForServiceType = attrRqst.isForServiceType();
+        ServiceURL serviceURL = null;
+        ServiceType serviceType = null;
+        if (isForServiceType)
+        {
+            serviceURL = null;
+            serviceType = new ServiceType(attrRqst.getURL());
+        }
+        else
+        {
+            serviceURL = new ServiceURL(attrRqst.getURL());
+            serviceType = serviceURL.getServiceType();
+        }
+        List<ServiceInfo> services = matchServices(serviceType, attrRqst.getLanguage(), attrRqst.getScopes(), null);
+
+        Attributes attributes = Attributes.NONE;
+        for (ServiceInfo service : services)
+        {
+            if (isForServiceType)
+                attributes = attributes.merge(service.getAttributes());
+            else if (service.getServiceURL().equals(serviceURL))
+                attributes = attributes.merge(service.getAttributes());
+        }
+        Attributes tags = attrRqst.getTags();
+        if (!tags.isEmpty()) attributes = attributes.intersect(attrRqst.getTags());
+        return attributes;
+    }
+
     public void directoryAgentBorn(DirectoryAgentEvent event)
     {
         DirectoryAgentInfo directoryAgent = event.getDirectoryAgent();
@@ -534,9 +578,11 @@ public abstract class AbstractServiceAgent extends AbstractServer implements Dir
                 case Message.SRV_DEREG_TYPE:
                     handleUDPSrvDeReg((SrvDeReg)message, localAddress, remoteAddress);
                     break;
+                case Message.ATTR_RQST_TYPE:
+                    handleUDPAttrRqst((AttrRqst)message, localAddress, remoteAddress);
                 default:
                     if (logger.isLoggable(Level.FINE))
-                        logger.fine("UserAgent " + this + " dropping multicast message " + message + ": not handled by ServiceAgents");
+                        logger.fine("UserAgent " + this + " dropping multicast message " + message + " "+ message.getMessageType()+": not handled by ServiceAgents");
                     break;
             }
         }
